@@ -1,0 +1,22 @@
+namespace :nginx do
+  %w(start stop restart reload).each do |task_name|
+    desc "#{task } Nginx"
+    task task_name do
+      on roles(:app), in: :sequence, wait: 5 do
+        sudo "/etc/init.d/nginx #{task_name}"
+      end
+    end
+  end
+
+  desc "Remove default Nginx Virtual Host"
+  task "remove_default_conf" do 
+    on roles(:app) do
+      if test("[ -f /etc/nginx/nginx.conf ]")
+      sudo "rm /etc/nginx/nginx.conf"
+      puts "removed default Nginx conf"
+      else
+        puts "No default Nginx conf to remove"
+      end
+    end
+  end
+end

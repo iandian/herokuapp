@@ -1,0 +1,36 @@
+#uer emc;
+worker_processes  1;
+
+events {
+worker_connections  1024;
+
+accept_mutex off;
+use epoll;
+}
+
+  http {
+      passenger_root /home/emc/.rvm/gems/ruby-2.1.4/gems/passenger-5.0.14;
+      passenger_ruby /home/emc/.rvm/gems/ruby-2.1.4/wrappers/ruby;
+      passenger_app_env development;    
+      include       mime.types;
+      default_type  application/octet-stream;
+
+    sendfile        on;
+    keepalive_timeout  65;
+
+    server {
+        listen       80;
+        server_name <%= fetch(:server_name) %>;
+        root <%= fetch(:deploy_to) %>/current/public;
+
+        location ~ ^/herokuapp(/.*|$) {
+            alias <%= fetch(:deploy_to) %>/current/public$1;  # <-- be sure to point to 'public'!
+            passenger_base_uri /herokuapp;
+            passenger_app_root <%= fetch(:deploy_to) %>/current;
+            passenger_document_root <%= fetch(:deploy_to) %>/current/public;
+            passenger_enabled on;
+        }
+    }
+
+  }
+

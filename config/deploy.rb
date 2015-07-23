@@ -13,8 +13,9 @@ set(:config_files, %w(
 set(:symlinks, [
   {
     source: "nginx.conf",
-    link: "/etc/nginx/nginx.conf"
+    link: "/opt/nginx/conf/nginx.conf"
   }
+ ]
 )
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -48,7 +49,6 @@ set(:symlinks, [
 
 namespace :deploy do
 
- after 'deploy:symlink:shared', 'deploy:compile_assets_locally'
 
  before 'deploy:setup_config', 'nginx:remove_default_conf'
 

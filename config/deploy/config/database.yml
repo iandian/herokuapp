@@ -21,7 +21,7 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
   username: emc
-  password: emcsiax@QA
+  password: password
 
 development:
   <<: *default
@@ -82,6 +82,5 @@ test:
 #
 production:
   <<: *default
-  database: herokuapp_production
-  username: herokuapp
-  password: <%= ENV['HEROKUAPP_DATABASE_PASSWORD'] %>
+  database: heroku
+

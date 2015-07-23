@@ -8,11 +8,11 @@
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
  set :server_name, "banger"
- role :app, %w{administrator@10.98.26.182}
- role :web, %w{administrator@10.98.26.182}
- role :db,  %w{administrator@10.98.26.182}
+ role :app, %w{emc@10.98.20.20}
+ role :web, %w{emc@10.98.20.20}
+ role :db,  %w{emc@10.98.20.20}
 
- server '10.98.26.182', user: 'administrator', roles: %w{web app db}, primary: true
+ server '10.98.20.20', user: 'emc', roles: %w{web app db}, primary: true
 
 
 # role-based syntax

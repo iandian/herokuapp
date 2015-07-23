@@ -5,7 +5,7 @@ set :application, 'herokuapp'
 set :repo_url, 'emc@10.98.20.20:~/git/herokuapp/.git'
 set :deploy_to, "/var/www/#{fetch(:application)}" 
 set :linked_files, %w{config/database.yml}
-
+set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 set(:config_files, %w(
   nginx.conf
 ))

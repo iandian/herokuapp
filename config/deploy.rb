@@ -49,7 +49,7 @@ set(:symlinks, [
 
 namespace :deploy do
 
-
+ after 'deploy:finished', 'deploy:setup_config'
  before 'deploy:setup_config', 'nginx:remove_default_conf'
 
   # reload nginx to it will pick up any modified vhosts from

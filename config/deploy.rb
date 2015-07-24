@@ -2,6 +2,8 @@
 lock '3.4.0'
 
 set :application, 'herokuapp'
+#set :pty, true
+set :use_sudo, false
 set :repo_url, 'emc@10.98.20.20:~/git/herokuapp/.git'
 set :deploy_to, "/var/www/#{fetch(:application)}" 
 set :linked_files, %w{config/database.yml}

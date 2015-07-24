@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :application, 'herokuapp', default_run_options[:pty] = true
+set :application, 'herokuapp' default_run_options[:pty] = true
 set :repo_url, 'emc@10.98.20.20:~/git/herokuapp/.git'
 set :deploy_to, "/var/www/#{fetch(:application)}" 
 set :linked_files, %w{config/database.yml}

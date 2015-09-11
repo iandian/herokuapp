@@ -1,0 +1,502 @@
+#DEMO_1
+# Yeoman with some generators and prerequisites
+FROM ubuntu:14.04
+
+# Install node.js
+RUN apt-get -yq update && \
+    apt-get -yq install git curl net-tools sudo bzip2 libpng-dev
+
+RUN curl -sL https://deb.nodesource.com/setup | bash - && \
+    apt-get -yq install nodejs
+
+# Install npm, yeoman and generators
+RUN npm install -g npm@latest && \
+    npm install -g yo bower grunt-cli && \
+    npm install -g generator-webapp generator-angular
+
+# Install Ruby & Compass
+RUN apt-get -yq install ruby && \
+    apt-get build-dep -yq --force-yes ruby-compass && \
+    gem install compass && \
+    npm install -g grunt-contrib-compass
+
+# Add a yeoman user because grunt doesn't like being root
+ENV LANG en_US.UTF-8
+RUN adduser --disabled-password --gecos "" yeoman && \
+    echo "yeoman ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+ENV HOME /home/yeoman
+
+WORKDIR /src
+
+# Expose the port
+EXPOSE 9000
+
+# Always run as the yeoman user
+USER yeoman
+
+
+#DEMO_2
+FROM webcenter/nodejs:0.12.7
+MAINTAINER Sebastien Langoureaux <linuxworkgroup@hotmail.com>
+
+USER root
+
+# Install git and xfce-terminal and chrome
+RUN curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list && \
+	apt-get update && \
+	apt-get install xfce4-terminal git google-chrome-beta unzip -y && \
+	rm -rf /var/lib/apt/lists/*	
+
+
+# Install yeoman
+RUN npm install -g yo bower grunt-cli gulp
+
+# Install generator for angular and angular-fullstack
+RUN npm install -g generator-angular
+RUN npm install -g generator-angular-fullstack
+
+
+USER dev
+
+WORKDIR /app
+
+EXPOSE 9000
+
+# Workspace to run git and yeoman command line
+VOLUME ["/app"]
+
+# User home directory to store git setting
+VOLUME ["/home/dev"]
+
+CMD ["xfce4-terminal",  "--command", "'/bin/bash'", "--title", "'Yeoman Shell'"]
+
+
+#DEMO_3
+FROM base
+
+RUN apt-get update
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository -y ppa:chris-lea/node.js
+RUN apt-get update
+RUN apt-get install -y nodejs
+RUN apt-get install -y git-core
+RUN apt-get install -y ssh
+RUN mkdir /var/run/sshd
+
+RUN npm install -g yo
+RUN npm install -g generator-angular
+
+RUN adduser --disabled-password --gecos "" yeoman
+ADD id_rsa_yeoman.pub /tmp/id_rsa_yeoman.pub
+RUN su yeoman; mkdir /home/yeoman/.ssh; cat /tmp/id_rsa_yeoman.pub >> /home/yeoman/.ssh/authorized_keys; echo "cd /var/yeoman" >> /home/yeoman/.bashrc
+RUN mkdir /var/yeoman
+RUN chown yeoman /var/yeoman
+
+
+#DEMO_4
+FROM buildpack-deps:wheezy
+
+# verify gpg and sha256: http://nodejs.org/dist/v0.10.30/SHASUMS256.txt.asc
+# gpg: aka "Timothy J Fontaine (Work) <tj.fontaine@joyent.com>"
+# gpg: aka "Julien Gilli <jgilli@fastmail.fm>"
+RUN set -ex \
+	&& for key in \
+		7937DFD2AB06298B2293C3187D33FF9D0246406D \
+		114F43EE0176B71C7BC219DD50A3051F888C628D \
+	; do \
+		gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
+	done
+
+ENV NODE_VERSION 0.12.7
+ENV NPM_VERSION 2.14.1
+
+RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" \
+	&& curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+	&& gpg --verify SHASUMS256.txt.asc \
+	&& grep " node-v$NODE_VERSION-linux-x64.tar.gz\$" SHASUMS256.txt.asc | sha256sum -c - \
+	&& tar -xzf "node-v$NODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1 \
+	&& rm "node-v$NODE_VERSION-linux-x64.tar.gz" SHASUMS256.txt.asc \
+	&& npm install -g npm@"$NPM_VERSION" \
+	&& npm cache clear
+
+CMD [ "node" ]
+
+
+#DEMO_5
+FROM node:0.10.35
+
+MAINTAINER Miraitechno, Inc.
+
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update && apt-get install -y ruby-compass
+RUN npm install -g yo@1.3.3 \
+                   bower@1.3.12 \
+                   grunt-cli@0.1.13 \
+                   generator-angular@0.10.0 \
+RUN useradd -m -d /home/developer -s /bin/bash developer && \
+    mkdir /opt/app && \
+    chown developer /opt/app
+WORKDIR /opt/app
+USER developer
+EXPOSE 3000 9000 35729
+CMD ["/bin/bash"]
+
+
+
+
+#DEMO_6
+FROM node:latest
+MAINTAINER Guilherme Willian de Oliveira <gwoliveira@gmail.com>
+
+https://github.com/elmosanches/docker_yeoman
+
+# Add an yoangular user because grunt doesn't like being root
+RUN adduser --disabled-password --gecos "" yoangular 
+
+# install yeoman
+RUN npm install -g grunt-cli bower yo generator-karma generator-angular
+
+# install sass compass
+RUN apt-get update && apt-get install -y ruby-full && \
+    gem install sass compass 
+
+# set HOME so 'npm install' and 'bower install' don't write to /
+ENV HOME /home/yoangular
+
+RUN mkdir /src && chown yoangular:yoangular /src
+WORKDIR /src
+
+# expose the working directory
+VOLUME ["/src"]
+
+USER yoangular
+EXPOSE 9000 35729
+CMD /bin/bash
+
+
+#DEMO_7
+ROM ubuntu 
+MAINTAINER David Weinstein <david@bitjudo.com> 
+
+
+# install our dependencies and nodejs 
+RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list 
+RUN apt-get update 
+RUN apt-get -y install python-software-properties git build-essential 
+RUN add-apt-repository -y ppa:chris-lea/node.js 
+RUN apt-get update 
+RUN apt-get -y install nodejs 
+# use changes to package.json to force Docker not to use the cache 
+# when we change our application's nodejs dependencies: 
+ADD package.json /tmp/package.json 
+RUN cd /tmp && npm install 
+RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/ 
+# From here we load our application's code in, therefore the previous docker 
+# "layer" thats been cached will be used if possible 
+WORKDIR /opt/app 
+ADD . /opt/app 
+EXPOSE 3000 
+CMD ["node", "server.js"]
+
+ 
+#DEMO_8
+# Yeoman with some generators and prerequisites
+FROM google/nodejs
+
+MAINTAINER Munjal Patel <munjalpatel@gmail.com>
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get -yq install libpng-dev
+RUN apt-get -yq install adduser
+
+RUN npm install -g npm@latest&& \
+    npm install -g yo bower grunt-cli && \
+    npm install -g generator-angular
+
+# Add an xroot user because grunt doesn't like being root
+RUN adduser --disabled-password --gecos "" xroot && \
+  echo "xroot ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+RUN apt-get -yq remove adduser
+
+# Expose the port
+EXPOSE 4000
+
+# set HOME so 'npm install' and 'bower install' don't write to /
+ENV HOME /home/xroot
+
+ENV LANG en_US.UTF-8
+
+RUN mkdir /src && chown xroot:xroot /src
+WORKDIR /src
+
+# Always run as the xroot user
+USER xroot
+
+# Set aliases
+RUN echo "alias ls='ls --color=auto'" >> /home/xroot/.bashrc
+RUN echo "alias ll='ls --color=auto -l'" >> /home/xroot/.bashrc
+RUN echo "alias l='ls --color=auto -lA'" >> /home/xroot/.bashrc
+RUN echo "alias c='clear'" >> /home/xroot/.bashrc
+
+CMD /bin/bash
+
+ONBUILD RUN npm install
+ONBUILD RUN bower install
+
+
+
+#DEMO_9
+FROM node:latest
+MAINTAINER Tiago Pires <tandrepires@gmail.com>
+
+ENV YOD_HOME /yod-setup
+ENV HOME $YOD_HOME
+
+ADD Dockerfile-setup $YOD_HOME/Dockerfile
+ADD setup.sh $YOD_HOME/setup.sh
+ADD scripts/* $YOD_HOME/scripts/
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* && \
+    npm install -g yo
+
+# download latest docker client
+RUN curl https://get.docker.io/builds/Linux/x86_64/docker-1.4.1 -o /usr/local/bin/docker && \
+    chmod +x /usr/local/bin/docker $YOD_HOME/setup.sh $YOD_HOME/scripts/*
+
+WORKDIR $YOD_HOME
+CMD ["/bin/bash","-c","setup.sh"]
+
+
+
+
+#DEMO_10
+FROM ubuntu:saucy
+MAINTAINER Kevin Littlejohn <kevin@littlejohn.id.au>
+RUN apt-get -yq update && apt-get -yq upgrade
+# Install pre-requisites
+RUN apt-get -yq install python-software-properties software-properties-common \
+                      python g++ make git ruby-compass libfreetype6
+# Install node.js, then npm install yo and the generators
+RUN add-apt-repository ppa:chris-lea/node.js -y \
+  && apt-get -yq update \
+  && apt-get -yq install nodejs \
+  && npm install yo -g \
+  && npm install -g generator-webapp generator-angular
+# Add a yeoman user because grunt doesn't like being root
+RUN adduser --disabled-password --gecos "" yeoman; \
+  echo "yeoman ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+ENV HOME /home/yeoman
+USER yeoman
+WORKDIR /home/yeoman
+# Expose the port
+EXPOSE 9000
+# Always run as the yeoman user
+CMD ['/bin/bash']
+
+
+
+#DEMO_11
+ FROM codenvy/shellinabox 
+ 
+
+ # install some components 
+ RUN sudo apt-get update && \ 
+     sudo apt-get install -y python git ruby-full rubygems npm && \ 
+     sudo ln -sf /usr/bin/nodejs /usr/bin/node && \ 
+     sudo gem install sass compass && \ 
+     sudo npm install -g yo generator-angular grunt-cli bower 
+ 
+ 
+ ENV HOME /home/user  
+ 
+
+ RUN mkdir /home/user/application /tmp/application 
+      
+ # Grunt will listen on 9000 port number 
+ EXPOSE 9000 
+ ENV CODENVY_APP_PORT_9000_HTTP 9000 
+ 
+ 
+ WORKDIR /home/user/application 
+
+
+ apt-get update -yq && apt-get upgrade -yq && \ 
+ apt-get install -yq curl git nano 
+ 
+
+ # install from nodesource using apt-get 
+ # https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server 
+ curl -sL https://deb.nodesource.com/setup | sudo bash - && \ 
+ apt-get install -yq nodejs build-essential 
+ 
+
+ # fix npm - not the latest version installed by apt-get 
+ npm install -g npm 
+ 
+ 
+ # add user with sudo privileges within Docker container  
+ # without adduser input questions 
+ # http://askubuntu.com/questions/94060/run-adduser-non-interactively/94067#94067 
+ USER="testuser" && \ 
+ adduser --disabled-password --gecos "" $USER && \ 
+ sudo usermod -a -G sudo $USER && \ 
+ echo "$USER:abc123" | chpasswd && \ 
+ su - $USER # switch to testuser 
+ 
+ 
+# install common full-stack JavaScript packages globally 
+# http://blog.nodejs.org/2011/03/23/npm-1-0-global-vs-local-installation 
+sudo npm install -g yo grunt-cli bower express 
+
+
+# optional, check locations and packages are correct 
+which node; node -v; which npm; npm -v; \ 
+npm ls -g --depth=0 
+
+
+############################################################################### 
+# Version 2: using curl, make, and npmjs.org’s install script 
+# Installs using make and shell script 
+# Easier to update node and npm versions in future 
+# Requires sudo to use npm 
+############################################################################### 
+
+
+# create new docker ubuntu container 
+sudo docker run -i -t ubuntu /bin/bash # drops you into container as root 
+
+ # update and install all required packages (no sudo required as root) 
+ # https://gist.github.com/isaacs/579814#file-only-git-all-the-way-sh 
+ apt-get update -yq && apt-get upgrade -yq && \ 
+ apt-get install -yq g++ libssl-dev apache2-utils curl git python make nano 
+ 
+ 
+# install latest Node.js and npm 
+# https://gist.github.com/isaacs/579814#file-node-and-npm-in-30-seconds-sh 
+mkdir ~/node-latest-install && cd $_ && \ 
+curl http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1 && \ 
+make install && \ # takes a few minutes to build... 
+curl https://www.npmjs.org/install.sh | sh 
+
+ 
+# add user with sudo privileges within Docker container  
+# without adduser input questions 
+# http://askubuntu.com/questions/94060/run-adduser-non-interactively/94067#94067 
+USER="testuser" && \ 
+adduser --disabled-password --gecos "" $USER && \ 
+sudo usermod -a -G sudo $USER && \ 
+echo "$USER:abc123" | chpasswd && \ 
+su - $USER # switch to testuser 
+
+ 
+ # install common full-stack JavaScript packages globally 
+ # http://blog.nodejs.org/2011/03/23/npm-1-0-global-vs-local-installation 
+ sudo npm install -g yo grunt-cli bower express 
+ 
+
+ # optional, check locations and packages are correct 
+ which node; node -v; which npm; npm -v; \ 
+npm ls -g --depth=0 
+
+
+
+############################################################################### 
+# Version 3: version 2 without requiring ‘sudo’ to use npm 
+# Does NOT require sudo to use npm 
+############################################################################### 
+
+ 
+ # create new docker ubuntu container 
+ sudo docker run -i -t ubuntu /bin/bash # drops you into container as root 
+ 
+
+ # update and install all required packages (no sudo required as root) 
+# https://gist.github.com/isaacs/579814#file-only-git-all-the-way-sh 
+ apt-get update -yq && apt-get upgrade -yq && \ 
+ apt-get install -yq g++ libssl-dev apache2-utils curl git python make nano 
+ 
+ 
+ # add user with sudo privileges within Docker container  
+ # without adduser input questions 
+ # http://askubuntu.com/questions/94060/run-adduser-non-interactively/94067#94067 
+ USER="testuser" && \ 
+ adduser --disabled-password --gecos "" $USER && \ 
+ sudo usermod -a -G sudo $USER && \ 
+ echo "$USER:abc123" | chpasswd && \ 
+ su - $USER # switch to testuser 
+ 
+
+ # setting up npm for global installation without sudo 
+ # http://stackoverflow.com/a/19379795/580268 
+ MODULES="local" && \ 
+ echo prefix = ~/$MODULES >> ~/.npmrc && \ 
+ echo "export PATH=\$HOME/$MODULES/bin:\$PATH" >> ~/.bashrc && \ 
+ . ~/.bashrc && \ 
+ mkdir ~/$MODULES 
+
+# install Node.js and npm 
+# https://gist.github.com/isaacs/579814#file-node-and-npm-in-30-seconds-sh 
+mkdir ~/node-latest-install && cd $_ && \ 
+curl http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1 && \ 
+./configure --prefix=~/$MODULES && \ 
+make install && \ # takes a few minutes to build... 
+curl https://www.npmjs.org/install.sh | sh 
+
+
+# install common fullstack JavaScript packages globally 
+ npm install -g yo grunt-cli bower express 
+ 
+
+ # optional, check locations and packages are correct 
+ which node; node -v; which npm; npm -v; \ 
+ npm ls -g --depth=0 
+
+
+
+
+#DEMO_12
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+
+Debian and Ubuntu based Linux distributions
+NOTE: Temporary info before full update of this wiki page Below is not an up-to-date info. Check the nodesource's blog post to install node 0.12 on Debian and Ubuntu. NOTE END
+
+Also including: Linux Mint, Linux Mint Debian Edition (LMDE), elementaryOS and others.
+
+Node.js is available from the NodeSource Debian and Ubuntu binary distributions repository (formerly Chris Lea's Launchpad PPA). Support for this repository, along with its scripts, can be found on GitHub at nodesource/distributions.
+
+Setup with Ubuntu:
+curl --silent --location https://deb.nodesource.com/setup_0.12 | sudo bash -
+
+
+Then install with Ubuntu:
+sudo apt-get install --yes nodejs
+
+
+Setup with Debian (as root):
+apt-get install curl
+curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
+
+
+Then install with Debian (as root):
+apt-get install --yes nodejs
+
+
+Optional: install build tools
+
+To compile and install native addons from npm you may also need to install build tools:
+apt-get install --yes build-essential
+
+
+(Note: The optional "nodejs-legacy" package from Debian helps prevent a conflict with the Amateur Packet Radio "Node" Program)
+
+Ok I see the solution
+ sudo npm cache clean
+
+Then
+sudo npm install -g grunt grunt-cli
+ 

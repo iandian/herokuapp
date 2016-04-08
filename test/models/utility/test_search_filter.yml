@@ -1,0 +1,157 @@
+check_filter_with_oneapp:
+  - metadata:
+      id: 6557
+      level: bvt
+      author: 'Apex Yu'
+      description: 'customer date filter works for single application'
+    parameter_list:
+    - parameters:
+        account: administrator@domain.com
+        password: qampass1!
+        application: "rp_filter"
+        title: "Sent date"
+        controller_type: "date"
+        values:
+          lte: "2016-01-21T23:59:59.000Z"
+          gte: "2015-11-21T00:00:00.000Z"
+        data_file_path: "/../../../scripts/installation/sampleconfig/rp_filter/index_rp_filter-bulk.json"
+        field: "sent_date"
+    validation_list:
+    - validations:
+        count: '0'
+  - metadata:
+      id: 6558
+      level: bvt
+      author: 'Apex Yu'
+      description: 'customer boolean filter works for single application'
+    parameter_list:
+    - parameters:
+        account: administrator@domain.com
+        password: qampass1!
+        application: "rp_filter"
+        title: "Has attachment"
+        controller_type: "boolean"
+        values: "false"
+        data_file_path: "/../../../scripts/installation/sampleconfig/rp_filter/index_rp_filter-bulk.json"
+        field: "has_attachment"
+    validation_list:
+    - validations:
+        count: '0'
+  - metadata:
+      id: 6559
+      level: bvt
+      author: 'Apex Yu'
+      description: 'customer multiple_string filter works for single application'
+    parameter_list:
+    - parameters:
+        account: administrator@domain.com
+        password: qampass1!
+        application: "rp_filter"
+        title: "Sender"
+        controller_type: "multiple_string"
+        values: "emc.com,google.com"
+        data_file_path: "/../../../scripts/installation/sampleconfig/rp_filter/index_rp_filter-bulk.json"
+        field: "sender"
+    validation_list:
+    - validations:
+        count: '0'
+  - metadata:
+      id: 6562
+      level: bvt
+      author: 'Apex Yu'
+      description: 'customer numeric filter works for single application'
+    parameter_list:
+    - parameters:
+        account: administrator@domain.com
+        password: qampass1!
+        application: "rp_filter"
+        title: "Attachment Size (in Byte)"
+        controller_type: "numeric"
+        values:
+          max: "2000"
+          min: "800"
+        data_file_path: "/../../../scripts/installation/sampleconfig/rp_filter/index_rp_filter-bulk.json"
+        field: "attachment_size"
+    validation_list:
+    - validations:
+        count: '0'
+  - metadata:
+      id: 6563
+      level: bvt
+      author: 'Apex Yu'
+      description: 'customer query_string filter works for single application'
+    parameter_list:
+    - parameters:
+        account: administrator@domain.com
+        password: qampass1!
+        application: "rp_filter"
+        title: "Subject"
+        controller_type: "query_string"
+        values: "Hello"
+        data_file_path: "/../../../scripts/installation/sampleconfig/rp_filter/index_rp_filter-bulk.json"
+        field: "subject"
+    validation_list:
+    - validations:
+        count: '0'
+check_multiple_filters_with_oneapp:
+  - metadata:
+      id: 6564
+      level: bvt
+      author: 'Apex Yu'
+      description: 'multiple customer filters works for single application'
+    parameter_list:
+    - parameters:
+        account: administrator@domain.com
+        password: qampass1!
+        application: "rp_filter"
+        data_file_path: "/../../../scripts/installation/sampleconfig/rp_filter/index_rp_filter-bulk.json"
+        feilds_list:
+        - feilds:
+            title: "Sent date"
+            controller_type: "date"
+            values: 
+              lte: "2016-03-06T23:59:59.000Z"
+              gte: "2000-03-01T00:00:00.000Z"		  
+            field: "sent_date"
+        - feilds:
+            title: "Subject"
+            controller_type: "query_string"
+            values: "Update"
+            field: "subject"
+        - feilds:
+            title: "Receiver"
+            controller_type: "multiple_string"
+            values: "domain.com,dpc.com"
+            field: "receiver"
+        - feilds:
+            title: "Attachment Size (in Byte)"
+            controller_type: "numeric"
+            values: 
+              max: "10000"
+              min: "100"
+            field: "attachment_size"
+    validation_list:
+    - validations:
+        count: '0'
+check_filter_cross_app:
+  - metadata:
+      id: 6557
+      level: bvt
+      author: 'Apex Yu'
+      description: 'customer date filter works for single application'
+    parameter_list:
+    - parameters:
+        account: administrator@domain.com
+        password: qampass1!
+        application: "rp_filter, rp_default"
+        title: "Type"
+        controller_type: "multiple_string"
+        values: "pdf,onm"
+        data_file_path: ["/../../../scripts/installation/sampleconfig/rp_filter/index_rp_filter-bulk.json", "/../../../scripts/installation/sampleconfig/rp_default/index_rp_default1-bulk.json", "/../../../scripts/installation/sampleconfig/rp_default/index_rp_default2-bulk.json"]
+        field: "type"
+        result_titles:
+          rp_filter: "subject"
+          rp_default: "name_custom"
+    validation_list:
+    - validations:
+        count: '0'

@@ -1,0 +1,130 @@
+{
+		"application" : "rp_presentation",
+		"type": "item",
+		"presentation": {
+			"hit": {
+				"icon": {
+					"field": "type",
+					"include": "always",
+					"format": "icon"
+				},
+				"name": {
+					"field": "name_custom",
+					"include": "always",
+					"format": "link",
+					"action": {
+						"type": "download",
+						"include": "full"
+					}
+				},
+				"location": {
+					"field": "location",
+					"include": "always",
+					"format": "text"
+				},
+				"source_server_id":{
+					"field": "source_server_id",
+					"include": "never",
+					"format": "text"
+				},
+				"entity_id":{
+					"field": "entity_id",
+					"include": "never",
+					"format": "text"
+				},
+				"rows": [
+				{
+					"elements": [{
+						"title": "OWNER",
+						"format": "text",
+						"field": "owner",
+						"include": "always"
+					}]
+				},				
+				{
+					"elements": [{
+						"title": "SIZE",
+						"format": "size",
+						"field": "size",
+						"include": "always"
+					},
+					{
+						"title": "DATE",
+						"format": "date",
+						"field": "date",
+						"include": "always"
+					}]
+				},
+				{
+					"elements": [{
+						"title": "SERVER",
+						"field": "source_name",
+						"include": "always",
+						"format": "text"
+					},
+					{
+						"title": "CLIENT",
+						"field": "entity_name",
+						"include": "always",
+						"format": "text"
+					}]
+				},
+				{
+					"elements": [{
+						"title": "PLATFORM",
+						"field": "platform",
+						"include": "always",
+						"format": "text"
+					},
+					{
+						"title": "PLUGIN",
+						"field": "plugin_name",
+						"include": "always",
+						"format": "text"
+					}]
+				},				
+				{
+					"elements": [{
+						"title": "",
+						"field": "content",
+						"include": "read-all",
+						"format": "multiple_line",
+						"highlight":true
+					}]
+				},
+				{
+					"elements": [{
+						"title": "",
+						"field": "item_specific_metadata",
+						"include": "read-all",
+						"format": "text",
+						"highlight":true
+					}]
+				}]
+			}
+		},
+		"highlight": {
+			"pre_tags": ["<b class='highlight'>"],
+			"post_tags": ["</b>"],
+			"fields": {
+				"content": {
+					"number_of_fragments": 1,
+					"fragment_size": 300,
+					"require_field_match": true
+				},
+				"item_specific_metadata": {
+					"number_of_fragments": 3,
+					"fragment_size": 300,
+					"require_field_match": true
+				},
+				"name_custom": {
+					"number_of_fragments": 0,
+					"require_field_match": true
+				},
+				"location": {
+					"number_of_fragments": 0,
+					"require_field_match": true
+				}
+			}
+		}
+	}

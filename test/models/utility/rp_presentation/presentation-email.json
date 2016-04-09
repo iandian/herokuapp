@@ -1,0 +1,110 @@
+{
+		"application" : "rp_presentation",
+		"type": "email",
+		"presentation": {
+			"hit": {
+				"icon": {
+					"field": "type",
+					"include": "always",
+					"format": "icon"
+				},
+				"name": {
+					"field": "subject",
+					"include": "always",
+					"format": "link",
+					"action": {
+						"type": "download",
+						"include": "full"
+					}
+				},
+				"entity_id":{
+					"field": "entity_id",
+					"include": "never",
+					"format": "text"
+				},
+				"rows": [
+				{
+					"elements": [{
+						"title": "ATTACHMENT",
+						"format": "text",
+						"field": "attachment_name",
+						"include": "always"
+					}]
+				},
+				{
+					"elements": [{
+						"title": "SENDER",
+						"format": "text",
+						"field": "sender",
+						"include": "always"
+					},
+					{
+						"title": "RECEIVER",
+						"format": "text",
+						"field": "receiver",
+						"include": "always"
+					}]
+				},
+				{
+					"elements": [{
+						"title": "SIZE",
+						"format": "size",
+						"field": "size",
+						"include": "always"
+					},
+					{
+						"title": "SENT_DATE",
+						"format": "date",
+						"field": "sent_date",
+						"include": "always"
+					}]
+				},								
+				{
+					"elements": [{
+						"title": "",
+						"field": "content",
+						"include": "read-all",
+						"format": "multiple_line",
+						"highlight":true
+					}]
+				},
+				{
+					"elements": [{
+						"title": "",
+						"field": "item_specific_metadata",
+						"include": "read-all",
+						"format": "text",
+						"highlight":true
+					}]
+				}]
+			}
+		},
+		"highlight": {
+			"pre_tags": ["<b class='highlight'>"],
+			"post_tags": ["</b>"],
+			"fields": {
+				"content": {
+					"number_of_fragments": 1,
+					"fragment_size": 300,
+					"require_field_match": true
+				},
+				"item_specific_metadata": {
+					"number_of_fragments": 3,
+					"fragment_size": 300,
+					"require_field_match": true
+				},
+				"name_custom": {
+					"number_of_fragments": 0,
+					"require_field_match": true
+				},
+				"subject": {
+					"number_of_fragments": 0,
+					"require_field_match": true
+				},
+				"attachment_name": {
+					"number_of_fragments": 0,
+					"require_field_match": true
+				}
+			}
+		}
+	}

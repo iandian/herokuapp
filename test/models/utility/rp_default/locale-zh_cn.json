@@ -1,0 +1,24 @@
+{
+    "application":"rp_default",
+    "lang": "zh-cn",
+    "string": {
+	  "CLIENT": "客户端",
+	  "PLATFORM": "平台",
+	  "LOCATION": "位置",
+	  "LOCATION_HINT": "请输入位置",
+	  "SERVER": "服务器",
+	  "BACKUP_DATE": "备份日期",
+	  "MIN_DATE_FORMAT":"开始: yyyy-MM-dd",
+	  "MAX_DATE_FORMAT":"结束: yyyy-MM-dd",
+	  "OWNER": "作者",
+	  "OWNER_HINT": "请输入 (',') 来区分不同作者",
+	  "item":{
+		"CLIENT": "客户端",
+	  	"PLATFORM": "平台",
+	  	"LOCATION": "位置",
+		"SIZE" : "大小",
+      	"DATE" : "修改时间",
+      	"OWNER": "作者"
+	   }
+	}
+}

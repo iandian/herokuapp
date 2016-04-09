@@ -1,0 +1,8 @@
+{
+  "Users": [
+    {
+      "user": "administrator@domain.com",
+      "roles": ["QUERY"]
+    }
+  ]
+}

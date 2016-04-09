@@ -1,0 +1,89 @@
+{
+	"application" : "rp_default",
+	"sorting": {
+		"show_standard": true,
+		"fields": [{
+			"version": ["undefined"],
+			"field": "entity_name",
+			"title": "CLIENT",
+			"standard": true
+		},
+		{
+			"version": ["undefined"],
+			"field": "platform",
+			"title": "PLATFORM",
+			"standard": true
+		}]
+	},
+	"filtering": {
+		"show_standard": true,
+		"filters": [{
+			"title": "PLATFORM",
+			"placeholder": "",
+			"show_as": "dropdown",
+			"options": [{
+				"name": "Avamar",
+				"value": "avamar"
+			},
+			{
+				"name": "NetWorker",
+				"value": "networker"
+			}],
+			"type": "string",
+			"field": "platform",
+			"agg": "none"
+		},
+		{
+			"title": "LOCATION",
+			"placeholder": "LOCATION_HINT",
+			"type": "query_string",
+			"field": "location",
+			"agg": "none"
+		},
+		{
+			"title": "SERVER",
+			"placeholder": "",
+			"type": "string",
+			"field": "source_id",
+			"show_as": "dropdown",
+			"source": "dynamic",
+			"endpoints": "servers",
+			"verb": "get",
+			"uri_field": "",
+			"secondary_field": "client_id",
+			"agg": "term_bar_drill"
+		},
+		{
+			"title": "CLIENT",
+			"placeholder": "",
+			"type": "string",
+			"field": "client_id",
+			"show_as": "dropdown",
+			"source": "dynamic",
+			"endpoints": "clients",
+			"verb": "get",
+			"uri_field": "source_id",
+			"depend_field": "source_id",
+			"agg": "none"
+		},
+		{
+			"title": "BACKUP_DATE",
+			"placeholderMin": "MIN_DATE_FORMAT",
+			"placeholderMax": "MAX_DATE_FORMAT",
+			"format": "yyyy-MM-dd",
+			"standard": false,
+			"field": "backup_date",
+			"type": "long_query",
+			"endpoints": "long_query",
+			"verb": "post",
+			"agg": "none"
+		},
+		{
+			"title": "OWNER",
+			"placeholder": "OWNER_HINT",
+			"type": "query_string",
+			"field": "owner",
+			"agg": "term_pie"		
+		}]
+	}
+}

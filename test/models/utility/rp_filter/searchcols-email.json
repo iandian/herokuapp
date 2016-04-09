@@ -1,0 +1,8 @@
+{
+	"application" : "rp_filter",
+	"type": "email",
+	"search_cols": [
+		"name_custom"
+	]
+}
+

@@ -1,0 +1,8 @@
+{ "index" : { "_type" : "item" } }
+{ "name" : "Hello Dpsearch2.docx","name_custom" : "Hello Dpsearch2.docx", "title" : "Hello Dpsearch2.docx","date":"2015-01-21T00:09:46.000Z","location": "/usr/local/administrator/hello dpsearch2.docx", "size": 1210, "platform": "Avamar", "item_type": "file", "type": "docx", "owner": "NewBalance"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "Test Driven2.xlsx","name_custom" : "Test Driven2.docx", "title" : "Test Driven2.docx","date":"2015-01-21T00:09:46.000Z","location": "/usr/local/administrator/Test Driven2.xlsx", "size": 1210, "platform": "Avamar", "item_type": "file", "type": "xlsx", "owner": "Nike"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "Hello Reveal2.docx","name_custom" : "Hello Reveal2.docx", "title" : "Hello Reveal2.docx","date":"2015-01-21T00:09:46.000Z","location": "/usr/local/administrator/Hello Reveal2.docx", "size": 1210, "platform": "Avamar", "item_type": "file", "type": "docx", "owner": "Adias"}
+
+

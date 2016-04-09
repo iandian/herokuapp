@@ -1,0 +1,9 @@
+{
+	"application" : "rp_presentation",
+	"type": "item",
+	"search_cols": [
+		"name_custom",
+		"location"
+	]
+}
+

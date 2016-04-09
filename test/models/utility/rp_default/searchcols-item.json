@@ -1,0 +1,8 @@
+{
+	"application" : "rp_default",
+	"type": "item",
+	"search_cols": [
+		"name_custom"
+	]
+}
+

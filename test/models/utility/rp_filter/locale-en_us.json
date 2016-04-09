@@ -1,0 +1,29 @@
+{
+    "application":"rp_filter",
+    "lang": "en-us",
+    "string": {
+	  "MAIL_SERVER": "Mail server",
+	  "SUBJECT": "Subject",
+	  "SENT_DATE": "Sent date",
+	  "MIN_SENT_DATE_FORMAT":"Start: yyyy-MM-dd",
+	  "MAX_SENT_DATE_FORMAT":"End: yyyy-MM-dd",
+	  "SENDER": "Sender",
+	  "RECEIVER": "Receiver",
+	  "SENDER_HINT": "Use a comma (',') to separate senders",
+	  "RECEIVER_HINT": "Use a comma (',') to separate receiver",
+	  "HAS_ATTACHMENT": "Has attachment",
+	  "ATTACHMENT_NAME": "Attachment name",
+	  "ATTACHMENT_SIZE": "Attachment Size (in Byte)",
+	  "SERVER": "Server",
+	  "CLIENT": "Client",
+	  "MIN_ATTACHMENT_SIZE_HINT": "Min:",
+	  "MAX_ATTACHMENT_SIZE_HINT": "Max:",
+	  "email":{
+		"ATTACHMENT": "Attachment",
+	  	"SENDER": "Sender",
+	  	"RECEIVER": "Receiver",
+		"SIZE" : "Size",
+      	"SENT_DATE" : "Sent date"
+	   }
+	}
+}

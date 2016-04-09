@@ -1,0 +1,51 @@
+{
+	  "application" : "rp_filter",
+	  "item_type": "email",
+	  "uri": "http://rp_filter.emc.com/actions",
+	  "actions": [
+	    {
+	      "action_type": "detail",
+	      "verb": "get",
+	      "redirect": true,
+	      "multiple": true,
+	      "include": "always",
+	      "endpint": "detail",
+	      "endpoints": null,
+	      "uri_field": "_id",
+	      "body_fields": null
+	    },
+	  	{
+	      "action_type": "restore",
+	      "verb": "get",
+	      "redirect": false,
+	      "multiple": true,
+	      "include": "always",
+	      "endpint": "detail",
+	      "endpoints": null,
+	      "uri_field": "_id",
+	      "body_fields": null
+	    },
+	    {
+	      "action_type": "preview",
+	      "verb": "get",
+	      "redirect": false,
+	      "multiple": true,
+	      "include": "always",
+	      "endpint": "detail",
+	      "endpoints": null,
+	      "uri_field": "_id",
+	      "body_fields": null
+	    },
+	    {
+	      "action_type": "download",
+	      "verb": "get",
+	      "redirect": false,
+	      "multiple": true,
+	      "include": "always",
+	      "endpint": "detail",
+	      "endpoints": null,
+	      "uri_field": "_id",
+	      "body_fields": null
+	    }
+	  ]
+}

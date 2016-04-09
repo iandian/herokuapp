@@ -1,0 +1,40 @@
+{
+ "searchable": true,
+  "settings": {
+    "index": {
+      "number_of_replicas": "1",
+      "number_of_shards": "5"
+    },
+    "mappings": {
+      "email": {
+        "properties": {         
+          "subject": { "store": true,"type": "string"},          
+          "unindexable": { "store": true,"type": "boolean"},
+          "xvDate": { "store": true,"format": "date_time","type": "date"},
+          "type": { "index": "not_analyzed","store": true,"type": "string"},
+          "date": { "store": true,"format": "date_time","type": "date","copy_to": [ "xvDate"]},
+          "schema_version": { "store": true,"type": "integer"},
+          "item_specific_metadata": { "store": true,"type": "string"},          
+          "index_date": { "store": true,"format": "date_time","type": "date"},
+          "create_date": { "store": true,"format": "date_time","type": "date"},
+          "previewable": { "store": true,"type": "boolean"},
+          "name": { "store": true,"type": "string"},
+          "permissions": { "index": "not_analyzed","store": true,"type": "string"},
+          "item_type": { "index": "not_analyzed","store": true,"type": "string"},
+          "platform": { "index": "not_analyzed","store": true,"type": "string"},
+          "size": { "store": true,"type": "long","copy_to": [ "xvSize"]},
+          "content": { "store": true,"analyzer": "standard","type": "string"},
+          "preview": { "index": "no","store": true,"type": "string"},          
+          "sender": {"store": true,"type": "string"},
+          "receiver": {"store": true,"type": "string"},
+          "mail_server": { "index": "not_analyzed","store": true,"type": "string"},
+          "sent_date": { "store": true,"format": "date_time","type": "date"},
+          "has_attachment": { "store": true,"type": "boolean"},
+          "attachment_size": { "store": true,"type": "long","copy_to": [ "xvSize"]},
+          "attachment_name": { "store": true,"type": "string"},
+          "owner": { "store": true,"type": "string"}}
+      }
+    }
+  }
+}
+

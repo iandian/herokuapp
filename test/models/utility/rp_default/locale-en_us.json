@@ -1,0 +1,24 @@
+{
+    "application":"rp_default",
+    "lang": "en-us",
+    "string": {
+	  "CLIENT": "Client",
+	  "PLATFORM": "Platform",
+	  "LOCATION": "Location",
+	  "LOCATION_HINT": "Type location here",
+	  "SERVER": "Server",
+	  "BACKUP_DATE": "Backup Date",
+	  "MIN_DATE_FORMAT":"Start: yyyy-MM-dd",
+	  "MAX_DATE_FORMAT":"End: yyyy-MM-dd",
+	  "OWNER": "Owner",
+	  "OWNER_HINT": "Use a comma (',') to separate owners",
+	  "item":{
+		"CLIENT": "Client",
+	  	"PLATFORM": "Platform",
+	  	"LOCATION": "Location",
+		"SIZE" : "Size",
+      	"DATE" : "Last Modified",
+      	"OWNER": "Owner"
+	   }
+	}
+}

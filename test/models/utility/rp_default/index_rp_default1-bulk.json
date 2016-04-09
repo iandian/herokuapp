@@ -1,0 +1,36 @@
+{ "index" : { "_type" : "item" } }
+{ "name" : "Hello Dpsearch1.docx","name_custom" : "Hello Dpsearch1.docx", "title" : "Hello Dpsearch1.docx","date":"2005-01-21T00:09:46.000Z","location": "/usr/local/administrator/hello dpsearch1.docx", "size": 123, "platform": "Avamar", "item_type": "file", "type": "docx", "owner": "mandic"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "Test Driven1.xlsx","name_custom" : "Test Driven1.docx", "title" : "Test Driven1.docx","date":"1995-11-21T00:09:46.000Z","location": "/usr/local/administrator/Test Driven1.xlsx", "size": 100, "platform": "Avamar", "item_type": "file", "type": "xlsx", "owner": "tuna"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "Hello Reveal1.docx","name_custom" : "Hello Reveal1.docx", "title" : "Hello Reveal1.docx","date":"2015-01-21T00:09:46.000Z","location": "/usr/local/administrator/Hello Reveal1.docx", "size": 396710, "platform": "Avamar", "item_type": "file", "type": "docx", "owner": "waffles"}
+{ "index" : { "_type" : "item" } }
+{ "name" : "Hello Tuna Waffles.docx","name_custom" : "Hello Tuna Waffles.docx", "title" : "Hello Tuna Waffles.docx","date":"2016-01-21T00:09:46.000Z","location": "C:/Documents/Hello Tuna Waffles.docx", "size": 3670, "platform": "Avamar", "item_type": "file", "type": "docx", "owner": "esplin"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "Test Driven.xlsx","name_custom" : "Test Driven.xlsx", "title" : "Test Driven.xlsx","date":"2015-07-21T00:09:46.000Z","location": "/usr/local/administrator/Test Driven.xlsx", "size": 12, "platform": "Avamar", "item_type": "file", "type": "xlsx", "owner": "Jeremy"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "Hello Reveal.docx","name_custom" : "Hello Reveal.docx", "title" : "Hello Reveal.docx","date":"2000-01-01T00:09:46.000Z","location": "/usr/local/administrator/Hello Reveal.docx", "size": 6890, "platform": "Avamar", "item_type": "file", "type": "docx", "owner": "tuna"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "Admin Guide.pdf","name_custom" : "Admin Guide.pdf", "title" : "Admin Guide.pdf","date":"2015-01-31T00:09:46.000Z","location": "/usr/local/administrator/Admin Guide.pdf", "size": 12100, "platform": "NetWorker", "item_type": "file", "type": "pdf", "owner": "mandic"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "Reveal UI.jpg","name_custom" : "Reveal UI.jpg", "title" : "Reveal UI.jpg","date":"2005-01-21T00:09:46.000Z","location": "/usr/local/administrator/Reveal UI.jpg", "size": 1210, "platform": "NetWorker", "item_type": "file", "type": "jpg", "owner": "waffles"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "Download.bmp","name_custom" : "Download.bmp", "title" : "Download.bmp","date":"2011-03-29T00:09:46.000Z","location": "/usr/local/administrator/Download.bmp", "size": 2480, "platform": "Avamar", "item_type": "file", "type": "bmp", "owner": "esplin"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "我们.doc","name_custom" : "我们.doc", "title" : "我们.doc","date":"2016-03-11T00:09:46.000Z","location": "/usr/local/administrator/我们.doc", "size": 24800, "platform": "Avamar", "item_type": "file", "type": "doc", "owner": "mandic"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "Reveal installation guide draft.pdf","name_custom" : "Reveal installation guide draft.pdf", "title" : "Reveal installation guide draft.pdf","date":"2015-10-21T00:09:46.000Z","location": "C:/Documents/Reveal installation guide draft.pdf", "size": 24800, "platform": "Avamar", "item_type": "file", "type": "pdf", "owner": "mandic"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "happy new year.zip","name_custom" : "happy new year.zip", "title" : "happy new year.zip","date":"2001-10-21T00:09:46.000Z","location": "/usr/local/administrator/happy new year.zip", "size": 4960, "platform": "NetWorker", "item_type": "file", "type": "zip", "owner": "waffles"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "Documents.rar","name_custom" : "Documents.rar", "title" : "Documents.rar","date":"2010-9-21T00:09:46.000Z","location": "/usr/local/administrator/Documents.rar", "size": 4960, "platform": "NetWorker", "item_type": "file", "type": "rar", "owner": "mandic"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "TestData.txt","name_custom" : "TestData.txt", "title" : "TestData.txt","date":"2016-01-21T00:09:46.000Z","location": "/usr/local/administrator/TestData.txt", "size": 1210, "platform": "Avamar", "item_type": "file", "type": "txt", "owner": "李四"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "3月30日星期三，网络安全大师邀你华山论剑.onm","name_custom" : "3月30日星期三，网络安全大师邀你华山论剑.onm", "title" : "3月30日星期三，网络安全大师邀你华山论剑","date":"2001-10-21T00:09:46.000Z","location": "D:/Backups/中文/3月30日星期三，网络安全大师邀你华山论剑.onm", "size": 49600, "platform": "NetWorker", "item_type": "file", "type": "onm", "owner": "tuna"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "ATTN: Invoice J-77765834.msg","name_custom" : "ATTN: Invoice J-77765834.msg", "title" : "ATTN: Invoice J-77765834","date":"2010-9-21T00:09:46.000Z","location": "C:/Documents/ATTN: Invoice J-77765834.msg", "size": 496, "platform": "NetWorker", "item_type": "file", "type": "msg", "owner": "张三"}
+{ "index" : { "_type" : "item"} }
+{ "name" : "Re: One week @ a time, Feb 5, 2016.msg","name_custom" : "Re: One week @ a time, Feb 5, 2016.msg", "title" : "Re: One week @ a time, Feb 5, 2016","date":"2016-01-21T00:09:46.000Z","location": "/usr/local/administrator/Re: One week @ a time, Feb 5, 2016.msg", "size": 121, "platform": "Avamar", "item_type": "file", "type": "msg", "owner": "waffles"}
+
+

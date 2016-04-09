@@ -1,0 +1,9 @@
+{
+	"application" : "rp_presentation",
+	"type": "email",
+	"search_cols": [
+		"name_custom",
+		"attachment_name"
+	]
+}
+

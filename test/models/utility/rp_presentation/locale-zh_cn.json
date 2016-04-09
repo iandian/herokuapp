@@ -1,0 +1,43 @@
+{
+    "application":"rp_presentation",
+    "lang": "zh-cn",
+    "string": {
+	  "PLATFORM": "平台",
+	  "LOCATION": "位置",
+	  "LOCATION_HINT": "请输入位置",
+	  "SERVER": "服务器",
+	  "CLIENT": "Client",
+	  "BACKUP_DATE": "备份日期",
+	  "MIN_SENT_DATE_FORMAT":"开始: yyyy-MM-dd",
+	  "MAX_SENT_DATE_FORMAT":"结束: yyyy-MM-dd",
+	  "OWNER": "作者",
+	  "OWNER_HINT": "请输入 (',') 来区分不同作者",
+	  "SENDER": "寄件人",
+	  "RECEIVER": "收件人",	  
+	  "SENDER_HINT": "请输入 (',') 来区分不同寄件人",
+	  "RECEIVER_HINT": "请输入 (',') 来区分不同收件人",
+	  "MAIL_SERVER": "邮箱服务器",
+	  "SUBJECT": "标题",
+	  "SENT_DATE": "发送时间",	  
+	  "HAS_ATTACHMENT": "是否有附件",
+	  "ATTACHMENT_NAME": "附件名称",
+	  "ATTCHMENT_SIZE": "附件大小 (in Byte)",	  
+	  "MIN_ATTACHMENT_SIZE_HINT": "最小值:",
+	  "MAX_ATTACHMENT_SIZE_HINT": "最大值:",
+	  "item":{
+		"CLIENT": "客户端",
+	  	"PLATFORM": "平台",
+		"SIZE" : "大小",
+      	"DATE" : "修改时间",
+      	"OWNER": "作者",
+      	"SERVER": "服务器"
+	   },
+	   "email":{
+		"ATTACHMENT": "附件",
+	  	"SENDER": "寄件人",
+	  	"RECEIVER": "收件人",
+		"SIZE" : "大小",
+      	"SENT_DATE" : "发送时间"
+	   }
+	}
+}

@@ -1,0 +1,8 @@
+{
+  "Users": [
+    {
+      "user": "reveal_index_admin1@domain.com",
+      "roles": "QUERY"
+    }
+    ]
+}

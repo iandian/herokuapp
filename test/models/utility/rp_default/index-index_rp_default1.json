@@ -1,0 +1,39 @@
+{
+ "searchable": true,
+  "settings": {
+    "index": {
+      "number_of_replicas": "1",
+      "number_of_shards": "5"
+    },
+    "mappings": {
+      "item": {
+        "properties": {
+          "location": { "store": true,"type": "string","copy_to": [ "xvLocation"]},
+          "subject": { "store": true,"type": "string"},
+          "is_fulltext": { "store": true,"type": "boolean"},
+          "unindexable": { "store": true,"type": "boolean"},
+          "xvDate": { "store": true,"format": "date_time","type": "date"},
+          "type": { "index": "not_analyzed","store": true,"type": "string"},
+          "date": { "store": true,"format": "date_time","type": "date","copy_to": [ "xvDate"]},
+          "schema_version": { "store": true,"type": "integer"},
+          "item_specific_metadata": { "store": true,"type": "string"},
+          "author": { "store": true,"type": "string"},
+          "title": { "store": true,"type": "string"},
+          "index_date": { "store": true,"format": "date_time","type": "date"},
+          "create_date": { "store": true,"format": "date_time","type": "date"},
+          "previewable": { "store": true,"type": "boolean"},
+          "name": { "store": true,"type": "string"},
+          "permissions": { "index": "not_analyzed","store": true,"type": "string"},
+          "item_type": { "index": "not_analyzed","store": true,"type": "string"},
+          "platform": { "index": "not_analyzed","store": true,"type": "string"},
+          "size": { "store": true,"type": "long","copy_to": [ "xvSize"]},
+          "content": { "store": true,"analyzer": "standard","type": "string"},
+          "preview": { "index": "no","store": true,"type": "string"},
+          "attachment_name": {"store": true,"type": "string"},
+          "sender": {"store": true,"type": "string"},
+          "owner": { "analyzer": "standard","store": true,"type": "string"}}
+      }
+    }
+  }
+}
+

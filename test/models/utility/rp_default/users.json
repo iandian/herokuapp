@@ -1,0 +1,21 @@
+{
+  "Users": [
+    {
+      "user": "administrator@domain.com",
+      "roles": ["QUERY"]
+    },
+    {
+
+      "user": "Reveal_App_Admin1@domain.com",
+      "roles": ["QUERY"]
+    },
+    {
+      "user": "Reveal_Index_Admin1@domain.com",
+      "roles": []
+    },
+    {
+      "user": "Reveal_Index_Admin2@domain.com",
+      "roles": []
+    }
+  ]
+}

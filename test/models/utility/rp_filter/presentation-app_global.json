@@ -1,0 +1,115 @@
+{
+	"application" : "rp_filter",
+	"sorting": {
+		"show_standard": true,
+		"fields": [{
+			"version": ["undefined"],
+			"field": "entity_name",
+			"title": "Client",
+			"standard": true
+		},
+		{
+			"version": ["undefined"],
+			"field": "platform",
+			"title": "Platform",
+			"standard": true
+		}]
+	},
+	"filtering": {
+		"show_standard": true,
+		"filters": [{
+			"title": "MAIL_SERVER",
+			"placeholder": "",
+			"show_as": "dropdown",
+			"options": [{
+				"name": "Exchange",
+				"value": "exchange"
+			},
+			{
+				"name": "Notes",
+				"value": "notes"
+			}],
+			"type": "string",
+			"field": "mail_server",
+			"agg": "none"
+		},
+		{
+			"title": "SUBJECT",
+			"placeholder": "",
+			"type": "query_string",
+			"field": "subject",
+			"agg": "none"
+		},
+		{
+			"title": "SENDER",
+			"placeholder": "SENDER_HINT",
+			"type": "multiple_string",
+			"field": "sender",
+			"agg": "term_pie"
+		},
+		{
+			"title": "RECEIVER",
+			"placeholder": "RECEIVER_HINT",
+			"type": "multiple_string",
+			"field": "receiver",
+			"agg": "term_pie"
+		},
+		{
+			"title": "SENT_DATE",
+			"placeholderMin": "MIN_SENT_DATE_FORMAT",
+			"placeholderMax": "MAX_SENT_DATE_FORMAT",
+			"format": "yyyy-MM-dd",
+			"type": "date",
+			"field": "sent_date",
+			"agg": "date_range_bar_drill"
+		},
+		{
+			"title": "HAS_ATTACHMENT",
+			"type": "boolean",
+			"field": "has_attachment",
+			"agg": "none"
+		},		
+		{
+			"title": "ATTACHMENT_NAME",
+			"placeholder": "",
+			"type": "query_string",
+			"field": "attachment_name",
+			"agg": "none"
+		},
+		{
+			"title": "ATTACHMENT_SIZE",
+			"placeholderMin": "MIN_ATTACHMENT_SIZE_HINT",
+			"placeholderMax": "MAX_ATTACHMENT_SIZE_HINT",
+			"type": "numeric",
+			"field": "attachment_size",
+			"agg": "term_bar"
+		},
+		{
+			"title": "Server",
+			"placeholder": "",
+			"type": "string",
+			"field": "source_id",
+			"show_as": "dropdown",
+			"source": "dynamic",
+			"endpoints": "servers",
+			"verb": "get",
+			"uri_field": "",
+			"secondary_field": "client_id",
+			"agg": "term_bar_drill"
+		},
+		{
+			"title": "Client",
+			"placeholder": "",
+			"type": "string",
+			"field": "client_id",
+			"show_as": "dropdown",
+			"source": "dynamic",
+			"endpoints": "clients",
+			"verb": "get",
+			"uri_field": "source_id",
+			"depend_field": "source_id",
+			"agg": "none"
+		}
+		]
+	}
+}

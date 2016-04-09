@@ -1,0 +1,43 @@
+{
+    "application":"rp_presentation",
+    "lang": "en-us",
+    "string": {
+	  "PLATFORM": "Platform",
+	  "LOCATION": "Location",
+	  "LOCATION_HINT": "Type location here",
+	  "SERVER": "Server",
+	  "CLIENT": "Client",
+	  "BACKUP_DATE": "Backup date",
+	  "MIN_SENT_DATE_FORMAT":"Start: yyyy-MM-dd",
+	  "MAX_SENT_DATE_FORMAT":"End: yyyy-MM-dd",
+	  "OWNER": "Owner",
+	  "OWNER_HINT": "Use a comma (',') to separate owner",
+	  "SENDER": "Sender",
+	  "RECEIVER": "Receiver",	  
+	  "SENDER_HINT": "Use a comma (',') to separate sender",
+	  "RECEIVER_HINT": "Use a comma (',') to separate receiver",
+	  "MAIL_SERVER": "Mail Server",
+	  "SUBJECT": "Subject",
+	  "SENT_DATE": "Sent date",	  
+	  "HAS_ATTACHMENT": "Has attachment",
+	  "ATTACHMENT_NAME": "Attachment name",
+	  "ATTCHMENT_SIZE": "Attachment Size (in Byte)",	  
+	  "MIN_ATTACHMENT_SIZE_HINT": "Min:",
+	  "MAX_ATTACHMENT_SIZE_HINT": "Max:",
+	  "item":{
+		"CLIENT": "Client",
+	  	"PLATFORM": "Platform",
+		"SIZE" : "Size",
+      	"DATE" : "Last Modified",
+      	"OWNER": "Owner",
+      	"SERVER": "Server"
+	   },
+	   "email":{
+		"ATTACHMENT": "Attachment",
+	  	"SENDER": "Sender",
+	  	"RECEIVER": "Receiver",
+		"SIZE" : "Size",
+      	"SENT_DATE" : "Sent date"
+	   }
+	}
+}

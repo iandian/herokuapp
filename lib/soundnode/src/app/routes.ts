@@ -2,7 +2,7 @@
 import {Home} from './components/home';     // ./components/home/index.ts
 
 export default [
-    {path: '/', component: Home, name: 'Home'},
+    {path: '', redirectTo: 'charts', pathMatch: 'full'},
     {path: 'charts', loadChildren: 'app/chart/chart.module#ChartModule'},
 //	{path: 'favorites', loadChildren: 'app/favorite/favorite.module#FavoriteModule'},
 //	{path: 'playlists', loadChildren: 'app/playlist/playlist.module#PlaylistModule'},

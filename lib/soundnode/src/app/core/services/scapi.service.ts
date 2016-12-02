@@ -4,13 +4,25 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/observable/fromPromise';
+
+interface SCapiApiServiceOptions {
+  url?: string;
+  http?: Http;
+  idKey?: string;
+  config?: any;
+}
  
 
  export class SCapiService{
-
-
-
-
+   private API_PATH: string = 'https://api.soundcloud.com/me/';
+	var url = 'https://api.soundcloud.com/me/' + endpoint + '.json?limit=25&oauth_token=' + $window.scAccessToken
+			+ '&linked_partitioning=1'
+   url: string;
+   http: Http;
+   idKey: string;
+   config: URLSearchParams = new URLSearchParams();
+   nextPageToken: string;
+   private accessToken: string;
 
     constructor(options: SCApiServiceOptions | any) {
       this.resetConfig();
@@ -22,6 +34,47 @@ import 'rxjs/add/observable/fromPromise';
               this.setConfig(options.config);
           }
       }
+  }
+  
+  setToken(token: string) {
+      this.accessToken = token;
+  }
+
+  hasToken (): boolean {
+      return this.accessToken.length > 0;
+  }
+  
+  setConfig(config) {
+      Object.keys(config).forEach(option => {
+          this.config.set(option, config[option]);
+      });
+  }
+  
+  resetConfig() {
+      this.config.set('part', 'snippet,contentDetails');
+      this.config.set('key', YOUTUBE_API_KEY);
+      this.config.set('maxResults', '50');
+      this.config.set('pageToken', '');
+  }
+  
+  createHeaders () {
+    const accessToken = this.accessToken;
+    const headersOptions = {};
+    if (accessToken) {
+      headersOptions['authorization'] = `Bearer ${accessToken}`;
+    }
+    return new Headers(headersOptions);
+  }
+  
+  following () {
+      const accessToken = this.accessToken;
+      this.isSearching = true;
+      let options: RequestOptionsArgs = {
+          search: this.config,
+          headers: this.createHeaders()
+      };
+      return this.http.get(`${this.API_PATH}.json?limit=25&oauth_token=${this.accessToken}&linked_partitioning=1`, options)
+          .map(response => response.json());
   }
 
     /**

@@ -1,0 +1,16 @@
+https://github.com/quantopian/zipline
+https://github.com/hustcer/star
+https://github.com/quantopian/alphalens
+https://github.com/quantopian/pyfolio
+https://github.com/jasti/Stock-Predictor
+https://github.com/shidenggui/easytrader
+https://github.com/shidenggui/easyquotation
+
+https://github.com/ricequant/rqalpha
+https://github.com/vnpy/vnpy
+https://github.com/bbfamily/abu
+https://github.com/wilsonfreitas/awesome-quant
+https://github.com/QUANTAXIS/QUANTAXIS
+https://github.com/thuquant/awesome-quant
+https://github.com/foolcage/fooltrader
+https://github.com/sinall/ShiPanE-Python-SDK
